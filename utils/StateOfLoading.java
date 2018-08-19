@@ -18,4 +18,5 @@ public class StateOfLoading {
             this.message = loadingState;
         }
     }
+
 }
