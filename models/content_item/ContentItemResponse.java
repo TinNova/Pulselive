@@ -11,14 +11,10 @@ public class ContentItemResponse {
 
     @SerializedName("items")
     @Expose
-    private ArrayList<Item> items = null;
+    private final ArrayList<Item> items = null;
 
     public List<Item> getItems() {
         return items;
-    }
-
-    public void setItems(ArrayList<Item> items) {
-        this.items = items;
     }
 
     @Override

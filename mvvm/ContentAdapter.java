@@ -16,14 +16,12 @@ import java.util.ArrayList;
 
 public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHolder> {
 
-    private ArrayList<Item> mItems;
-    private Context mContext;
+    private final ArrayList<Item> mItems;
     private final ItemPositionListener itemPositionListener;
-    private LayoutInflater layoutInflater;
+    private final LayoutInflater layoutInflater;
 
 
     public ContentAdapter(Context mContext, ItemPositionListener itemPositionListener) {
-        this.mContext = mContext;
         mItems = new ArrayList<>();
         this.itemPositionListener = itemPositionListener;
         layoutInflater = LayoutInflater.from(mContext);
@@ -68,10 +66,10 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView titleTv;
-        TextView subtitleTv;
-        TextView dateTimeTv;
-        TextView idTv;
+        private final TextView titleTv;
+        private final TextView subtitleTv;
+        private final TextView dateTimeTv;
+        private final TextView idTv;
 
         public ViewHolder(View itemView) {
             super(itemView);

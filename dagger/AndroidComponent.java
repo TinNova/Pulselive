@@ -8,9 +8,6 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 
-/**
- * Created by Tin on 19/08/2018.
- */
 
 @Component(modules = {ApiModule.class})
 @Singleton

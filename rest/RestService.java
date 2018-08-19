@@ -5,15 +5,12 @@ import com.example.tin.pulselive.models.content_item.ContentItemResponse;
 
 import io.reactivex.Observable;
 
-/**
- * Created by Tin on 19/08/2018.
- */
 
 public class RestService {
 
     private static final String TAG = RestService.class.getSimpleName();
 
-    private ApiMethods apiMethods;
+    private final ApiMethods apiMethods;
 
     public RestService(ApiMethods apiMethods) {
 

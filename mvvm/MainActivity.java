@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements ItemPositionListe
     private ContentAdapter mAdapter;
     private RecyclerView mRecyclerView;
     private ProgressBar mProgressBar;
-    MainViewModel mainViewModel;
+    private MainViewModel mainViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,13 +120,13 @@ public class MainActivity extends AppCompatActivity implements ItemPositionListe
         startActivity(intent);
     }
 
-    public void hideProgressBar() {
+    private void hideProgressBar() {
 
         mProgressBar.setVisibility(View.GONE);
         mRecyclerView.setVisibility(View.VISIBLE);
     }
 
-    public void showProgressBar() {
+    private void showProgressBar() {
 
         mProgressBar.setVisibility(View.VISIBLE);
         mRecyclerView.setVisibility(View.GONE);

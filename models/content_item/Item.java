@@ -39,7 +39,7 @@ public class Item implements Parcelable
     }
     ;
 
-    protected Item(Parcel in) {
+    private Item(Parcel in) {
         this.id = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.title = ((String) in.readValue((String.class.getClassLoader())));
         this.subtitle = ((String) in.readValue((String.class.getClassLoader())));
@@ -69,16 +69,8 @@ public class Item implements Parcelable
         return subtitle;
     }
 
-    public void setSubtitle(String subtitle) {
-        this.subtitle = subtitle;
-    }
-
     public String getDate() {
         return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public void writeToParcel(Parcel dest, int flags) {

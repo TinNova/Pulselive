@@ -25,24 +25,8 @@ public class DetailItem implements Parcelable
     @SerializedName("date")
     @Expose
     private String date;
-    public final static Creator<DetailItem> CREATOR = new Creator<DetailItem>() {
 
-
-        @SuppressWarnings({
-            "unchecked"
-        })
-        public DetailItem createFromParcel(Parcel in) {
-            return new DetailItem(in);
-        }
-
-        public DetailItem[] newArray(int size) {
-            return (new DetailItem[size]);
-        }
-
-    }
-    ;
-
-    protected DetailItem(Parcel in) {
+    private DetailItem(Parcel in) {
         this.id = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.title = ((String) in.readValue((String.class.getClassLoader())));
         this.subtitle = ((String) in.readValue((String.class.getClassLoader())));
@@ -52,6 +36,18 @@ public class DetailItem implements Parcelable
 
     public DetailItem() {
     }
+
+    public static final Creator<DetailItem> CREATOR = new Creator<DetailItem>() {
+        @Override
+        public DetailItem createFromParcel(Parcel in) {
+            return new DetailItem(in);
+        }
+
+        @Override
+        public DetailItem[] newArray(int size) {
+            return new DetailItem[size];
+        }
+    };
 
     public Integer getId() {
         return id;
@@ -73,24 +69,12 @@ public class DetailItem implements Parcelable
         return subtitle;
     }
 
-    public void setSubtitle(String subtitle) {
-        this.subtitle = subtitle;
-    }
-
     public String getBody() {
         return body;
     }
 
-    public void setBody(String body) {
-        this.body = body;
-    }
-
     public String getDate() {
         return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public void writeToParcel(Parcel dest, int flags) {

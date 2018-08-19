@@ -65,7 +65,7 @@ public class DetailViewModel extends AndroidViewModel {
         return statesLiveData;
     }
 
-    public void loadItems(int itemId) {
+    private void loadItems(int itemId) {
 
 
         statesLiveData.postValue(new StateOfLoading.stateCodes(LOADING, "loading"));

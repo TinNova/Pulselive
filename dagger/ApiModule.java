@@ -23,8 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class ApiModule {
 
-    private String TAG = ApiModule.class.getSimpleName();
-    private String apiURL;
+    private final String apiURL;
 
     public ApiModule(String apiURL) {
 

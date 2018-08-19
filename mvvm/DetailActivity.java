@@ -3,7 +3,6 @@ package com.example.tin.pulselive.mvvm;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,17 +23,13 @@ import static com.example.tin.pulselive.utils.StateOfLoading.stateCodes.LOADING_
 
 public class DetailActivity extends AppCompatActivity {
 
-    private DetailViewModel detailViewModel;
-
-    TextView titleTv;
-    TextView subtitleTv;
-    TextView dateTimeTv;
-    TextView idTv;
-    TextView bodyTv;
+    private TextView titleTv;
+    private TextView subtitleTv;
+    private TextView dateTimeTv;
+    private TextView idTv;
+    private TextView bodyTv;
     private ProgressBar mProgressBar;
 
-
-    Item item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +58,7 @@ public class DetailActivity extends AppCompatActivity {
             mProgressBar = findViewById(R.id.pB_detail);
 
 
-            item = getIntent.getParcelableExtra(Const.ARG_CONTENT_ITEM);
+            Item item = getIntent.getParcelableExtra(Const.ARG_CONTENT_ITEM);
             int itemId = item.getId();
 
             bindOnViewModel(itemId);
@@ -73,7 +68,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private void bindOnViewModel(int itemId) {
 
-        detailViewModel = ViewModelProviders.of(this).get(DetailViewModel.class);
+        DetailViewModel detailViewModel = ViewModelProviders.of(this).get(DetailViewModel.class);
 
         detailViewModel.listenToStatesChanges(itemId).observe(this, new Observer<StateOfLoading.stateCodes>() {
             @Override
@@ -99,6 +94,7 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onChanged(@android.support.annotation.Nullable DetailItem detailItem) {
 
+                assert detailItem != null;
                 setTitle(detailItem.getTitle());
                 titleTv.setText(detailItem.getTitle());
                 subtitleTv.setText(detailItem.getSubtitle());
@@ -111,7 +107,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
 
-    public void hideProgressBar() {
+    private void hideProgressBar() {
 
         mProgressBar.setVisibility(View.GONE);
         titleTv.setVisibility(View.VISIBLE);
@@ -121,7 +117,7 @@ public class DetailActivity extends AppCompatActivity {
         bodyTv.setVisibility(View.VISIBLE);
     }
 
-    public void showProgressBar() {
+    private void showProgressBar() {
 
         mProgressBar.setVisibility(View.VISIBLE);
         titleTv.setVisibility(View.GONE);
