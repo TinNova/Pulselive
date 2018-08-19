@@ -14,6 +14,6 @@ import retrofit2.http.GET;
 public interface ApiMethods {
 
     @GET("test/native/contentList.json")
-    Observable<ArrayList<ContentItemResponse>> getContentList();
+    Observable<ContentItemResponse> getContentList();
 
 }

@@ -9,6 +9,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ProgressBar;
 
+import com.example.tin.pulselive.models.ContentItemResponse;
+import com.example.tin.pulselive.models.Item;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        setupViews();
 //
-//        bindOnViewModel();
+        bindOnViewModel();
     }
 
 //    private void setupViews() {
@@ -47,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
 //
 //    }
 
-//    private void bindOnViewModel() {
-//
-//        mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+    private void bindOnViewModel() {
+
+        mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
 //
 //        mainViewModel.listenToStatesChanges().observe(this, new Observer<StateOfLoading.stateCodes>() {
 //            @Override
@@ -71,15 +74,15 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 //
-//        mainViewModel.listenToDataChanges().observe(this, new Observer<ArrayList<RocketResponse>>() {
-//            @Override
-//            public void onChanged(@Nullable ArrayList<RocketResponse> rocketResponse) {
-//
-//                mAdapter.addItems(rocketResponse);
-//
+        mainViewModel.listenToDataChanges().observe(this, new Observer<ArrayList<Item>>() {
+            @Override
+            public void onChanged(@Nullable ArrayList<Item> items) {
+
+//                mAdapter.addItems(contentItemResponse);
+
 //                hideProgressBar();
-//            }
-//        });
-//
-//    }
+            }
+        });
+
+    }
 }

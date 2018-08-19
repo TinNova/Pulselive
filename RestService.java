@@ -21,7 +21,7 @@ public class RestService {
         this.apiMethods = apiMethods;
     }
 
-    public Observable<ArrayList<ContentItemResponse>> getContentList() {
+    public Observable<ContentItemResponse> getContentList() {
         /* Here we receive the Response, (which is already parsed when it arrives here) */
         return apiMethods.getContentList();
     }
