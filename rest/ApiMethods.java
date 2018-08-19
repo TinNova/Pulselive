@@ -1,4 +1,4 @@
-package com.example.tin.pulselive;
+package com.example.tin.pulselive.rest;
 
 import com.example.tin.pulselive.models.content_detail.ContentDetailResponse;
 import com.example.tin.pulselive.models.content_item.ContentItemResponse;

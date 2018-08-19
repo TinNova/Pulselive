@@ -1,4 +1,4 @@
-package com.example.tin.pulselive;
+package com.example.tin.pulselive.mvvm;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.tin.pulselive.listeners.ItemPositionListener;
+import com.example.tin.pulselive.R;
 import com.example.tin.pulselive.models.content_item.Item;
 
 import java.util.ArrayList;

@@ -4,8 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.tin.pulselive.ApiMethods;
-import com.example.tin.pulselive.RestService;
+import com.example.tin.pulselive.rest.ApiMethods;
+import com.example.tin.pulselive.rest.RestService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

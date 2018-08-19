@@ -1,4 +1,4 @@
-package com.example.tin.pulselive;
+package com.example.tin.pulselive.listeners;
 
 import com.example.tin.pulselive.models.content_item.Item;
 
