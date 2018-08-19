@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.ProgressBar;
 
 import com.example.tin.pulselive.models.ContentItemResponse;
@@ -14,13 +15,13 @@ import com.example.tin.pulselive.models.Item;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ItemPositionListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-//    private ContentAdapter mAdapter;
+    private ContentAdapter mAdapter;
     private RecyclerView mRecyclerView;
-    private ProgressBar mProgressBar;
+//    private ProgressBar mProgressBar;
     MainViewModel mainViewModel;
 
     @Override
@@ -28,27 +29,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        setupViews();
-//
+        setupViews();
+
         bindOnViewModel();
     }
 
-//    private void setupViews() {
-//
-//        /* Setting up the RecyclerView and Adapter*/
-//        mRecyclerView = findViewById(R.id.rV_main);
-//        mRecyclerView.setHasFixedSize(true);
-//        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
-//        mRecyclerView.setLayoutManager(mLinearLayoutManager);
-//
-//        mAdapter = new ContentAdapter(getApplicationContext(), this);
-//        mRecyclerView.setAdapter(mAdapter);
-//
+    private void setupViews() {
+
+        /* Setting up the RecyclerView and Adapter*/
+        mRecyclerView = findViewById(R.id.rV_main);
+        mRecyclerView.setHasFixedSize(true);
+        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLinearLayoutManager);
+
+        mAdapter = new ContentAdapter(getApplicationContext(), this);
+        mRecyclerView.setAdapter(mAdapter);
+
 //        mProgressBar = findViewById(R.id.pB_main);
-//
+
 ////        pullToRefresh();
 //
-//    }
+    }
 
     private void bindOnViewModel() {
 
@@ -78,11 +79,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable ArrayList<Item> items) {
 
-//                mAdapter.addItems(contentItemResponse);
+                mAdapter.addItems(items);
 
 //                hideProgressBar();
             }
         });
+
+    }
+
+    @Override
+    public void coinItemClick(Item item) {
+
+        Log.d(TAG, "clickedOn Item: " + item);
 
     }
 }
