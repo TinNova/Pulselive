@@ -1,6 +1,7 @@
 package com.example.tin.pulselive.dagger;
 
 import com.example.tin.pulselive.AppClass;
+import com.example.tin.pulselive.DetailViewModel;
 import com.example.tin.pulselive.MainViewModel;
 
 import javax.inject.Singleton;
@@ -17,7 +18,7 @@ public interface AndroidComponent {
 
     void inject(AppClass appClass);
     void inject(MainViewModel mainViewModel);
-//    void inject(DetailViewModel detailViewModel);
+    void inject(DetailViewModel detailViewModel);
 
 }
 

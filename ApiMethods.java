@@ -1,19 +1,20 @@
 package com.example.tin.pulselive;
 
-import com.example.tin.pulselive.models.ContentItemResponse;
-
-import java.util.ArrayList;
+import com.example.tin.pulselive.models.content_detail.ContentDetailResponse;
+import com.example.tin.pulselive.models.content_item.ContentItemResponse;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
-/**
- * Created by Tin on 19/08/2018.
- */
 
 public interface ApiMethods {
 
     @GET("test/native/contentList.json")
     Observable<ContentItemResponse> getContentList();
+
+
+    @GET("test/native/content/{id}.json")
+    Observable<ContentDetailResponse> getContentDetail(@Path("id") int itemId);
 
 }

@@ -1,6 +1,6 @@
 package com.example.tin.pulselive;
 
-import com.example.tin.pulselive.models.Item;
+import com.example.tin.pulselive.models.content_item.Item;
 
 /**
  * Created by Tin on 19/08/2018.

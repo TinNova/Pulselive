@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.tin.pulselive.models.Item;
+import com.example.tin.pulselive.models.content_item.Item;
 
 import java.util.ArrayList;
 
@@ -74,10 +74,10 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
         public ViewHolder(View itemView) {
             super(itemView);
 
-            titleTv = itemView.findViewById(R.id.tV_title);
-            subtitleTv = itemView.findViewById(R.id.tV_subTitle);
-            dateTimeTv = itemView.findViewById(R.id.tV_dateTime);
-            idTv = itemView.findViewById(R.id.tV_id);
+            titleTv = itemView.findViewById(R.id.tV_title_rV);
+            subtitleTv = itemView.findViewById(R.id.tV_subTitle_rV);
+            dateTimeTv = itemView.findViewById(R.id.tV_dateTime_rV);
+            idTv = itemView.findViewById(R.id.tV_id_rV);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

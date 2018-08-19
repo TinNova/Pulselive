@@ -1,8 +1,7 @@
 package com.example.tin.pulselive;
 
-import com.example.tin.pulselive.models.ContentItemResponse;
-
-import java.util.ArrayList;
+import com.example.tin.pulselive.models.content_detail.ContentDetailResponse;
+import com.example.tin.pulselive.models.content_item.ContentItemResponse;
 
 import io.reactivex.Observable;
 
@@ -24,5 +23,10 @@ public class RestService {
     public Observable<ContentItemResponse> getContentList() {
         /* Here we receive the Response, (which is already parsed when it arrives here) */
         return apiMethods.getContentList();
+    }
+
+    public Observable<ContentDetailResponse> getContentDetail(int itemId) {
+        /* Here we receive the Response, (which is already parsed when it arrives here) */
+        return apiMethods.getContentDetail(itemId);
     }
 }

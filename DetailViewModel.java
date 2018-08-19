@@ -6,10 +6,8 @@ import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.example.tin.pulselive.models.content_item.ContentItemResponse;
-import com.example.tin.pulselive.models.content_item.Item;
-
-import java.util.ArrayList;
+import com.example.tin.pulselive.models.content_detail.ContentDetailResponse;
+import com.example.tin.pulselive.models.content_detail.DetailItem;
 
 import javax.inject.Inject;
 
@@ -19,55 +17,57 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 
-public class MainViewModel extends AndroidViewModel {
+/**
+ * Created by Tin on 19/08/2018.
+ */
 
-    private static final String TAG = MainViewModel.class.getSimpleName();
+public class DetailViewModel extends AndroidViewModel {
 
-    private MutableLiveData<ArrayList<Item>> contentLiveData;
+    private static final String TAG = DetailViewModel.class.getSimpleName();
+
+    private MutableLiveData<DetailItem> contentDetailLiveData;
 
     @Inject
     RestService restService;
 
-    public MainViewModel(@NonNull Application application) {
+    public DetailViewModel(@NonNull Application application) {
         super(application);
 
         ((AppClass) application).getAndroidComponent().inject(this);
 
     }
 
-    public MutableLiveData<ArrayList<Item>> listenToDataChanges() {
+    public MutableLiveData<DetailItem> listenToDataChanges(int itemId) {
 
-        if (contentLiveData == null) {
+        if (contentDetailLiveData == null) {
 
-            contentLiveData = new MutableLiveData<>();
+            contentDetailLiveData = new MutableLiveData<>();
 
-            loadItems();
+            loadItems(itemId);
         }
-        return contentLiveData;
+        return contentDetailLiveData;
     }
 
-    public void loadItems() {
+    public void loadItems(int itemId) {
 
 
 //        statesLiveData.postValue(new StateOfLoading.stateCodes(0, "loading"));
 
-        restService.getContentList()
+        restService.getContentDetail(itemId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ContentItemResponse>() {
+                .subscribe(new Observer<ContentDetailResponse>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(ContentItemResponse contentItemResponse) {
+                    public void onNext(ContentDetailResponse contentDetailResponse) {
 
-//                        mRocketResponse.clear();
-//                        mRocketResponse.addAll(rocketResponse);
-                        contentLiveData.postValue((ArrayList<Item>) contentItemResponse.getItems());
-                        Log.d(TAG, "contentItemResponse.getItems: " + contentItemResponse.getItems());
-//                        statesLiveData.postValue(new StateOfLoading.stateCodes(1, "loadingComplete"));
+                        contentDetailLiveData.postValue(contentDetailResponse.getDetailItem());
+
+                        Log.d(TAG, "onNext contentDetailResponse: " + contentDetailResponse.getDetailItem().getBody());
 
                     }
 

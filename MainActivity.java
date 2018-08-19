@@ -2,16 +2,16 @@ package com.example.tin.pulselive;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.ProgressBar;
 
-import com.example.tin.pulselive.models.ContentItemResponse;
-import com.example.tin.pulselive.models.Item;
+import com.example.tin.pulselive.models.content_item.Item;
+import com.example.tin.pulselive.utils.Const;
 
 import java.util.ArrayList;
 
@@ -90,7 +90,10 @@ public class MainActivity extends AppCompatActivity implements ItemPositionListe
     @Override
     public void coinItemClick(Item item) {
 
-        Log.d(TAG, "clickedOn Item: " + item);
+        Log.d(TAG, "clickedOn DetailItem: " + item);
 
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra(Const.ARG_CONTENT_ITEM, item);
+        startActivity(intent);
     }
 }
