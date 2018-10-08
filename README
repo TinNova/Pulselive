@@ -1,1 +1,8 @@
+# PulseLive
 
+## App built to learn how the new Android Achitecture concept LiveData works
+
+### Libraries Used:
+- MVVM
+- LiveData
+- Retrofit
